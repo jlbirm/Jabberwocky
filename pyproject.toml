@@ -9,6 +9,7 @@ python = "^3.8"
 python-dotenv = "^0.15.0"
 "discord.py" = "^1.6.0"
 flask = "^1.1.2"
+replit = "^2.0.0"
 
 [tool.poetry.dev-dependencies]
 

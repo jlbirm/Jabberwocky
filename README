@@ -1,0 +1,32 @@
+Jabberwocky Discord Bot
+
+KSM Tracking for guilds and friends lists
+
+~~List of Commands~~
+!hello
+!ping
+
+!character
+    update
+    info
+    ksm -- NYI
+    help
+
+!guild
+    update
+    info
+    help
+
+!roster
+    update
+    info
+    ksm
+    help
+
+!ksm -- NYI
+    guild
+        character
+        dungeon
+    friends
+        character
+        dungeon

@@ -1,3 +1,8 @@
+import requests
+import json
+import os
+from dotenv import load_dotenv
+
 def get_api_key():
     load_dotenv()
     client_ID = os.getenv('CLIENT_ID')
@@ -5,15 +10,12 @@ def get_api_key():
 
     url = 'https://us.battle.net/oauth/token'
 
-	data = {
-		'client_id': client_ID,
-		'client_secret': client_S,
-		'grant_type': 'client_credentials'}
+    data = {'client_id': client_ID, 'client_secret': client_SECRET, 'grant_type': 'client_credentials'}
 
-	r = requests.post(url, data)
-	key = json.loads(r.text)
+    r = requests.post(url, data)
+    key = json.loads(r.text)
 
-	return key
+    return key
 
 def get_character():
 	region = input("Enter your region: ").lower()
@@ -127,24 +129,24 @@ def get_dungeon_list(key):
 	return dungeons
 
 def get_roster(key, guild):
-	api_key = key['access_token']
-	url = f'https://{guild[0]}.api.blizzard.com/data/wow/guild/{guild[1]}/{guild[2]}/roster?namespace=profile-us&locale=en_US&access_token={api_key}'
+    api_key = key['access_token']
+    url = f'https://{guild[0]}.api.blizzard.com/data/wow/guild/{guild[1]}/{guild[2]}/roster?namespace=profile-us&locale=en_US&access_token={api_key}'
 
-	response = requests.get(url)
-	data = json.loads(response.text)
+    response = requests.get(url)
+    data = json.loads(response.text)
 
-	roster = {}
+    roster = {}
 
-	for i in data['members']:
-		name = i['character']['name']
-		realm = i['character']['realm']['slug']
-		pclass_id =i['character']['playable_class']['id']
-		pclass = get_player_class(pclass_id)
-		rank = i['rank']
+    for i in data['members']:
+        name = i['character']['name']
+        realm = i['character']['realm']['slug']
+        pclass_id =i['character']['playable_class']['id']
+        pclass = get_player_class(pclass_id)
+        rank = i['rank']
 
-		roster[name] = roster.get(name, {'realm':realm, 'class':pclass, 'rank':rank})
+        roster[name] = roster.get(name, {'realm':realm, 'class':pclass, 'rank':rank})
 	
-	return roster
+    return roster
 
 def prune_roster(roster): # Get only characters of specific ranks
 	ranks = []
