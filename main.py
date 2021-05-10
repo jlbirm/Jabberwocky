@@ -74,11 +74,14 @@ async def roster(ctx, arg = 'help', name = "entropi", server = "zuljin", region 
     #         roster_list.append("\n")
     #     roster_list.append("```")
     #     msg = ' '.join(roster_list)
+    elif arg == 'clear':
+        clear_roster()
+        msg = 'Guild roster cleared'
     elif arg == 'ksm':
         update_roster_ksm(roster, ranks)
         msg = 'Guild roster updated with key info'
     else:
-        msg = 'Please add "update (name) (server) (region)", "info", or "ksm" (to update ksm data)'
+        msg = 'Please add "update", "info", or "ksm" (to update ksm data)'
 
     await ctx.send(msg)
 

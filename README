@@ -19,14 +19,14 @@ KSM Tracking for guilds and friends lists
 
 !roster
     update
-    info
+    info -- NYI
     ksm
     help
 
-!ksm -- NYI
+!ksm 
     guild
         character
         dungeon
     friends
-        character
-        dungeon
+        character -- NYI
+        dungeon -- NYI

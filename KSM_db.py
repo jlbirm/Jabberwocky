@@ -59,6 +59,11 @@ def update_roster(name, server, region):
     conn.commit()
     conn.close()
 
+def clear_roster():
+    conn = sqlite3.connect('KSM_db.db')
+    c = conn.cursor()
+    c.execute('DROP TABLE IF EXISTS roster')
+    conn.close()
 
 def get_db_roster(ranks = None): 
     conn = sqlite3.connect('KSM_db.db')
